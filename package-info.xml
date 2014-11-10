@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>sorunome:smf-fixes</id>
+	<name>SMF fixes</name>
+	<type>modification</type>
+	<version>0.1</version>
+	<install>
+		<readme type="file">readme.txt</readme>
+		<modification type="file">modification.xml</modification>
+	</install>
+	<uninstall>
+		<readme type="inline">This will fix various things on SMF. DON'T use it if you don't have all the packages installed.</readme>
+	<modification type="file" reverse="true">modification.xml</modification>
+	</uninstall>
+</package-info>

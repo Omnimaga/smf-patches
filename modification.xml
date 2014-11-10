@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<id>sorunome:smf-fixes</id>
+	<version>0.1</version>
+	
+	<file name="$sourcedir/Subs.php">
+		<operation>
+			<search position="replace"><![CDATA[$code = strtr($tag['content'], array('$1' => $data));]]></search>
+			<add><![CDATA[if(is_array($data)){
+				$code = strtr($tag['content'], array('$1' => $data[0]));
+			}else{
+				$code = strtr($tag['content'], array('$1' => $data));
+			}]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[if  (preg_match(\'~^(?:http://((?:www|au|br|ca|es|fr|de|hk|ie|in|il|it|jp|kr|mx|nl|nz|pl|ru|tw|uk)\.)?youtube\.com/(?:[^"]*?)(?:(?:video_)?id=|(?:v|p)(?:/|=)))?([0-9a-f]{16}|[0-9a-z-_]{11})~i\'.($context[\'utf8\'] ? \'u\' : \'\'), $link, $matches))]]></search>
+			<add><![CDATA[if  (preg_match(\'~^(?:https?://((?:www|au|br|ca|es|fr|de|hk|ie|in|il|it|jp|kr|mx|nl|nz|pl|ru|tw|uk)\.)?youtube\.com/(?:[^"]*?)(?:(?:video_)?id=|(?:v|p)(?:/|=)))?([0-9a-f]{16}|[0-9a-z-_]{11})~i\'.($context[\'utf8\'] ? \'u\' : \'\'), $link, $matches))]]></add>
+		</operation>
+	</file>
+	
+	<file name="$themedir/index.template.php">
+		<operation>
+			<search position="after"><![CDATA[foreach ($context['menu_buttons'] as $act => $button)
+	{
+]]></search>
+			<add><![CDATA[if(!isset($button['href']) || !isset($button['title'])) continue;]]></add>
+		</operation>
+	</file>
+</modification>
+
