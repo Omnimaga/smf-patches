@@ -27,5 +27,11 @@
 			<add><![CDATA[if(!isset($button['href']) || !isset($button['title'])) continue;]]></add>
 		</operation>
 	</file>
+	<file name="$sourcedir/Security.php"> //Added by geekboy1011 2/23/15
+		<operation>
+			<search position="replace">$timeLimit = 2;</search>
+			<add>return false;</add>
+		</operation>
+	</file>
 </modification>
 
