@@ -27,7 +27,7 @@
 			<add><![CDATA[if(!isset($button['href']) || !isset($button['title'])) continue;]]></add>
 		</operation>
 	</file>
-	<file name="$sourcedir/Security.php"> //Added by geekboy1011 2/23/15
+	<file name="$sourcedir/Subs.php"> //Added by geekboy1011 2/23/15   //Why did the refactor this into Security.php in smf 2.1? really like really
 		<operation>
 			<search position="replace">$timeLimit = 2;</search>
 			<add>return false;</add>
