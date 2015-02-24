@@ -41,7 +41,7 @@
 		<operation>
 			<search position="replace">AND log_type = {string:log_type}',</search>
 			<add>AND log_type = {string:log_type}
-			OR ip <> {string:ip}',</add>
+				OR ( ip <> {string:ip} AND log_type = {string:log_type} )',</add>
 		</operation>
 		<operation>
 			<search position="after">'log_type' => $error_type,</search>
