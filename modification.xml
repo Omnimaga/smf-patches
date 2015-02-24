@@ -29,8 +29,24 @@
 	</file>
 	<file name="$sourcedir/Subs.php"> //Added by geekboy1011 2/23/15   //Why did the refactor this into Security.php in smf 2.1? really like really
 		<operation>
-			<search position="replace">$timeLimit = 2;</search>
-			<add>return false;</add>
+			<search position="replace">	if (!allowedTo('moderate_board'))
+		$timeLimit = isset($timeOverrides[$error_type]) ? $timeOverrides[$error_type] : $modSettings['spamWaitTime'];
+	else
+		$timeLimit = 2;</search>
+			<add>	if (!allowedTo('moderate_board'))
+		$timeLimit = isset($timeOverrides[$error_type]) ? $timeOverrides[$error_type] : $modSettings['spamWaitTime'];
+	else
+		return false;;</add>
+		</operation>
+		<operation>
+			<search position="replace">AND log_type = {string:log_type}',</search>
+			<add>AND log_type = {string:log_type}
+			OR ip <> {string:ip}',</add>
+		</operation>
+		<operation>
+			<search position="after">'log_type' => $error_type,</search>
+			<add>
+				'ip' => $user_info['ip'],</add>
 		</operation>
 	</file>
 </modification>
